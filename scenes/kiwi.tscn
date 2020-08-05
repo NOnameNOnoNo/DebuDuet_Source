@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sprites/kiwi.png" type="Texture" id=1]
+
+[node name="kiwi" type="Node2D" groups=[
+"food_r",
+]]
+
+[node name="kiwi" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/anim/fadein.tres" type="Animation" id=1]
+[ext_resource path="res://assets/anim/fadeout.tres" type="Animation" id=2]
+[ext_resource path="res://assets/scripts/fader.gd" type="Script" id=3]
+
+[node name="fader" type="ColorRect"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="AnimationPlayer" parent="."]
+autoplay = "fadein"
+anims/fadein = ExtResource( 1 )
+anims/fadeout = ExtResource( 2 )
+
+[node name="switchtimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="switchtimer" to="." method="_sceneswitch"]

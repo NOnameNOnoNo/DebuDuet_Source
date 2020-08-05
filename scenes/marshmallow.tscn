@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sprites/pancakes.png" type="Texture" id=1]
+
+[node name="marshmallow" type="Node2D" groups=[
+"food_l",
+]]
+
+[node name="pancakes" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )

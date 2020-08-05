@@ -1,0 +1,72 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/sprites/horie1.png" type="Texture" id=1]
+[ext_resource path="res://assets/scripts/char.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/horie4.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/horie3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/horie5.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/horie2.png" type="Texture" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/anim/idle.tres" type="Animation" id=8]
+[ext_resource path="res://assets/anim/fed.tres" type="Animation" id=9]
+[ext_resource path="res://assets/anim/swap.tres" type="Animation" id=10]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "fed"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "swap"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/fed/node = SubResource( 1 )
+states/fed/position = Vector2( 390, 56 )
+states/idle/node = SubResource( 2 )
+states/idle/position = Vector2( 222, 56 )
+states/swap/node = SubResource( 3 )
+states/swap/position = Vector2( 313, 142 )
+transitions = [ "idle", "fed", SubResource( 4 ), "fed", "idle", SubResource( 5 ), "fed", "swap", SubResource( 6 ), "idle", "swap", SubResource( 7 ), "swap", "idle", SubResource( 8 ) ]
+start_node = "idle"
+graph_offset = Vector2( -170, -21 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+
+[node name="char" type="Node2D"]
+scale = Vector2( 1.00248, 0.995049 )
+script = ExtResource( 2 )
+textures = [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="animplayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/fed = ExtResource( 9 )
+anims/idle = ExtResource( 8 )
+anims/swap = ExtResource( 10 )
+
+[node name="animtree" type="AnimationTree" parent="."]
+tree_root = SubResource( 9 )
+anim_player = NodePath("../animplayer")
+active = true
+parameters/playback = SubResource( 10 )
+
+[node name="winlose" type="AudioStreamPlayer" parent="."]
