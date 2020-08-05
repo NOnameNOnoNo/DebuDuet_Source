@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/scenes/char.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/spawner.tscn" type="PackedScene" id=2]
@@ -15,9 +15,12 @@
 [ext_resource path="res://assets/sprites/table.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/bg.png" type="Texture" id=14]
 [ext_resource path="res://assets/scenes/music.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/scenes/quitter.tscn" type="PackedScene" id=16]
 
 [node name="game" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="quitter" parent="." instance=ExtResource( 16 )]
 
 [node name="music" parent="." instance=ExtResource( 15 )]
 
@@ -28,12 +31,12 @@ texture = ExtResource( 14 )
 
 [node name="char1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 200, 450 )
-scale = Vector2( 0.996883, 1.00623 )
+scale = Vector2( 1.00858, 0.982844 )
 mlp = 2.0
 
 [node name="char2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1080, 450 )
-scale = Vector2( 0.996883, 1.00623 )
+scale = Vector2( 1.00858, 0.982844 )
 textures = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
 mlp = 5.0
 side = "right"
@@ -86,10 +89,10 @@ __meta__ = {
 color = Color( 0, 0, 0, 0 )
 [connection signal="stats" from="char1" to="stats1" method="_statsupd"]
 [connection signal="stats" from="char2" to="stats2" method="_statsupd"]
-[connection signal="bonus" from="spawner" to="char1" method="_mlpinc"]
 [connection signal="bonus" from="spawner" to="char2" method="_mlpinc"]
-[connection signal="mistake" from="spawner" to="char1" method="_mistake"]
+[connection signal="bonus" from="spawner" to="char1" method="_mlpinc"]
 [connection signal="mistake" from="spawner" to="char2" method="_mistake"]
+[connection signal="mistake" from="spawner" to="char1" method="_mistake"]
 [connection signal="results" from="spawner" to="." method="_winner"]
 [connection signal="timeout" from="countdown" to="spawner" method="_gameover"]
 [connection signal="timeout" from="exit" to="fader" method="_fadeout"]

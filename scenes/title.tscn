@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/scenes/fader.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/font/marko_one_dfont.tres" type="DynamicFont" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/sprites/pancakes.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/sushi.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/kiwi.png" type="Texture" id=15]
+[ext_resource path="res://assets/scenes/quitter.tscn" type="PackedScene" id=16]
 
 [node name="title" type="Control"]
 anchor_right = 1.0
@@ -116,3 +117,5 @@ texture = ExtResource( 8 )
 [node name="fader" parent="." instance=ExtResource( 1 )]
 color = Color( 0, 0, 0, 0 )
 fadeoutscene = "game"
+
+[node name="quitter" parent="." instance=ExtResource( 16 )]

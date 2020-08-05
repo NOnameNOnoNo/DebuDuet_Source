@@ -22,8 +22,6 @@ func _process(delta):
 			side = "right"
 			pressed = true
 			_select(side)
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 
 func _select(var charside):
 	if side == "left":
