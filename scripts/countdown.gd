@@ -1,7 +1,7 @@
 extends Control
 
 #initial time
-export var time = 120.0
+export var time = 1200000.0
 #this signal triggers stuff after the timeout
 signal timeout
 #text label displaying time
